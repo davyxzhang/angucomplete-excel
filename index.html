@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/angucomplete-excel.css"/>
+</head>
+
+<body>
+    <div class="form-group">
+        <label>Enter Formula</label>
+        <div><em class="sm-font color-gray">Example: sum(Col1, Col2) or Col1 + Col2</em></div>
+        <angucomplete autocomplete="off" mathoperation="mathOperation" id="autoComplete" placeholder="Enter Expression" pause="0" selectedobject="selectedValue" localdata="searchList" searchfields="abb" titlefield="name" minlength="1" inputclass="form-control form-control-small" returnfirst=true/>
+    </div>
+
+    <script src="lib/angular.js"></script>
+    <script src="angucomplete-excel/angucomplete-excel.js"></script>
+    <script src="angucomplete_demo.js"></script>
+</body>
