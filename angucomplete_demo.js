@@ -2,11 +2,11 @@
     'use strict';
 
     angular.module('app', ['app.directives.angucomplete-excel'])
-        .controller('demoCtrl', demoCtrl);
+        .controller('DemoCtrl', DemoCtrl);
 
-    function demoCtrl() {
+    function DemoCtrl() {
         //search items provided to autocomplete-excel; matching values will be displayed as user types
-        $scope.searchList = [
+        this.searchList = [
             {abb: 'acos', name: 'acos()', type: 'function'},
             {abb: 'acot', name: 'acot()', type: 'function'},
             {abb: 'acsc', name: 'acsc()', type: 'function'},

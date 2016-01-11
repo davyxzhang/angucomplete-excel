@@ -7,13 +7,15 @@
 </head>
 
 <body>
-    <div class="form-group">
-        <label>Enter Formula</label>
-        <div><em class="sm-font color-gray">Example: sum(Col1, Col2) or Col1 + Col2</em></div>
-        <angucomplete autocomplete="off" mathoperation="mathOperation" id="autoComplete" placeholder="Enter Expression" pause="0" selectedobject="selectedValue" localdata="searchList" searchfields="abb" titlefield="name" minlength="1" inputclass="form-control form-control-small" returnfirst=true/>
+    <div ng-controller="DemoCtrl as demo">
+        <div class="form-group">
+            <label>Enter Formula</label>
+            <div><em class="sm-font color-gray">Example: sum(Col1, Col2) or Col1 + Col2</em></div>
+            <angucomplete autocomplete="off" mathoperation="demo.mathOperation" id="autoComplete" placeholder="Enter Expression" pause="0" selectedobject="demo.selectedValue" localdata="demo.searchList" searchfields="abb" titlefield="name" minlength="1" inputclass="form-control form-control-small" returnfirst=true>
+        </div>
     </div>
 
     <script src="lib/angular.js"></script>
-    <script src="angucomplete-excel/angucomplete-excel.js"></script>
     <script src="angucomplete_demo.js"></script>
+    <script src="angucomplete-excel/angucomplete-excel.js"></script>
 </body>
