@@ -41,5 +41,42 @@
             {abb: 'InternationalRevenue', name: 'InternationalRevenue', type: 'string'},
             {abb: 'DomesticRevenue', name: 'DomesticRevenue', type: 'string'}
         ];
+
+        this.tableData = {
+            headers: ["Title", "InternationalRevenue", "DomesticRevenue"],
+            data: [{Title: "test", InternationalRevenue: 10, DomesticRevenue: 10}]
+        };
+        this.mathOperation = "";
+        this.columnName = "NewColumn";
+
+
+        this.accept = function () {
+            console.log("test button");
+            var i,
+                mathResult,
+                originalTableData = angular.copy(this.tableData);
+
+            //we want to catch errors if any comes up from math evaluation
+            try {
+                //if user thinks our operation works like excel and start with '=' then we'll just remove it and then pass to math.js
+                if(this.mathOperation.charAt(0) === "=") {
+                    this.mathOperation = this.mathOperation.substring(1, this.mathOperation.length);
+                }
+
+                for (i = 0; i < this.tableData.data.length; i++) {
+                    mathResult = math.eval(this.mathOperation, this.tableData.data[i]);
+                    this.tableData.data[i][this.columnName] = mathResult;
+                }
+
+                this.tableData.headers.push({"title": $scope.columnName, "type": "calculated"});
+
+                //close the modal if success
+                $modalInstance.close(superTableData);
+            } catch (err) {
+                //if we catch an error, we'll roll back to original data
+                superTableData = angular.copy(originalSuperTableData);
+                $rootScope.$emit("activeAlert", "An error occurred during evaluation: " + err.message, "dangerous", 3500);
+            }
+        };
     }
 })();

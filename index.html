@@ -13,9 +13,12 @@
             <div><em class="sm-font color-gray">Example: sum(Col1, Col2) or Col1 + Col2</em></div>
             <angucomplete autocomplete="off" mathoperation="demo.mathOperation" id="autoComplete" placeholder="Enter Expression" pause="0" selectedobject="demo.selectedValue" localdata="demo.searchList" searchfields="abb" titlefield="name" minlength="1" inputclass="form-control form-control-small" returnfirst=true>
         </div>
+        <button ng-click="demo.accept()">Calculate</button>
     </div>
 
     <script src="lib/angular.js"></script>
+    <script src="lib/math.min.js"></script>
     <script src="angucomplete_demo.js"></script>
     <script src="angucomplete-excel/angucomplete-excel.js"></script>
+
 </body>
