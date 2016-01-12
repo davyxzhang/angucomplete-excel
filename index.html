@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/angucomplete-excel.css"/>
+</head>
+
+<style>
+    table, th , td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+</style>
+
+<body>
+    <div align="center" ng-controller="DemoCtrl as demo">
+        <h1>angucomplete-excel</h1>
+        <div style="width: 350px">
+            <label>New Column Name:</label>
+            <input type="text" ng-model="demo.columnName">
+            <div class="form-group">
+                <label>Enter Formula:</label>
+                <div><em class="sm-font color-gray">Example: sum(Col1, Col2) or Col1 + Col2</em></div>
+                <angucomplete autocomplete="off" mathoperation="demo.mathOperation" id="autoComplete" placeholder="Enter Expression" pause="0" selectedobject="demo.selectedValue" localdata="demo.searchList" searchfields="abb" titlefield="name" minlength="1" inputclass="form-control form-control-small" returnfirst=true>
+            </div>
+            <button ng-click="demo.accept()">Calculate</button>
+        </div>
+
+        <hr>
+
+        <table align="center">
+            <tr>
+                <th ng-repeat="header in demo.tableData.headers">{{header}}</th>
+            </tr>
+
+            <tr ng-repeat="row in demo.tableData.data">
+                <td ng-repeat="value in row">{{value }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="lib/angular.js"></script>
+    <script src="lib/math.min.js"></script>
+    <script src="angucomplete_demo.js"></script>
+    <script src="angucomplete-excel/angucomplete-excel.js"></script>
+</body>

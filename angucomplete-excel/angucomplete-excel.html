@@ -1,0 +1,27 @@
+<div class="angucomplete-holder">
+    <textarea id="autoComplete_value" ng-model="searchStr" placeholder="{{placeholder}}"
+              class="form-group form-control angucomplete-no-resize" ng-focus="resetHideResults()"
+              ng-blur="hideResults()"
+              ng-click="checkCaretPosition()"> </textarea>
+
+    <div id="autoComplete_dropdown" class="angucomplete-dropdown" ng-if="showDropdown">
+        <div class="angucomplete-searching" ng-show="searching">Searching...</div>
+        <div class="angucomplete-searching" ng-show="!searching && (!results || results.length == 0)">No results found
+        </div>
+        <div class="angucomplete-row" ng-repeat="result in results" ng-mousedown="selectResult(result)"
+             ng-mouseover="hoverRow($index)" ng-class="{'angucomplete-selected-row': $index == currentIndex}">
+            <div ng-if="imageField" class="angucomplete-image-holder">
+                +img ng-if="result.image && result.image !== ''" ng-src="{{result.image}}" class="angucomplete-image"/>
+                <div ng-if="!result.image && result.image !== ''" class="angucomplete-image-default">
+                </div>
+            </div>
+            <div class="angucomplete-title" ng-if="matchClass" ng-bind-html="result.title">
+            </div>
+            <div class="angucomplete-title" ng-if="!matchClass">{{result.originalObject.abb}}
+            </div>
+            <div ng-if="result.description && result.description !== ''" class="angucomplete-description">
+                {{result.description}}
+            </div>
+        </div>
+    </div>
+</div>
