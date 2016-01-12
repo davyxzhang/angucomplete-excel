@@ -79,11 +79,9 @@
             ]
         };
         this.mathOperation = "";
-        this.columnName = "TotalRevenue";
-
+        this.columnName = "";
 
         this.accept = function () {
-            console.log("test button");
             var i,
                 mathResult,
                 originalTableData = angular.copy(this.tableData);
@@ -101,8 +99,6 @@
                 }
 
                 this.tableData.headers.push(this.columnName);
-                this.tableData.data.push({});
-                this.tableData.data.pop();
             } catch (err) {
                 //if we catch an error, we'll roll back to original data
                 this.tableData = angular.copy(originalTableData);

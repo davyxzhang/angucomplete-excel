@@ -22,22 +22,24 @@
 
 <body>
     <div ng-controller="DemoCtrl as demo">
+        <label>New Column Name:</label>
+        <input type="text" ng-model="demo.columnName">
         <div class="form-group">
-            <label>Enter Formula</label>
+            <label>Enter Formula:</label>
             <div><em class="sm-font color-gray">Example: sum(Col1, Col2) or Col1 + Col2</em></div>
             <angucomplete autocomplete="off" mathoperation="demo.mathOperation" id="autoComplete" placeholder="Enter Expression" pause="0" selectedobject="demo.selectedValue" localdata="demo.searchList" searchfields="abb" titlefield="name" minlength="1" inputclass="form-control form-control-small" returnfirst=true>
         </div>
         <button ng-click="demo.accept()">Calculate</button>
+
         <hr>
+
         <table>
             <tr>
                 <th ng-repeat="header in demo.tableData.headers">{{header}}</th>
             </tr>
 
             <tr ng-repeat="row in demo.tableData.data">
-                <td>{{ row.Title }}</td>
-                <td>{{ row.InternationalRevenue }}</td>
-                <td>{{ row.DomesticRevenue }}</td>
+                <td ng-repeat="value in row">{{value }}</td>
             </tr>
         </table>
     </div>
