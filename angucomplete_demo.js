@@ -99,6 +99,7 @@
                 }
 
                 this.tableData.headers.push(this.columnName);
+                this.searchList.push({abb: this.columnName, name: this.columnName, type: 'string'});
             } catch (err) {
                 //if we catch an error, we'll roll back to original data
                 this.tableData = angular.copy(originalTableData);
