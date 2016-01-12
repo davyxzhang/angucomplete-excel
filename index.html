@@ -6,6 +6,20 @@
     <link type="text/css" rel="stylesheet" href="css/angucomplete-excel.css"/>
 </head>
 
+<style>
+    table, th , td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+</style>
+
 <body>
     <div ng-controller="DemoCtrl as demo">
         <div class="form-group">
@@ -14,6 +28,18 @@
             <angucomplete autocomplete="off" mathoperation="demo.mathOperation" id="autoComplete" placeholder="Enter Expression" pause="0" selectedobject="demo.selectedValue" localdata="demo.searchList" searchfields="abb" titlefield="name" minlength="1" inputclass="form-control form-control-small" returnfirst=true>
         </div>
         <button ng-click="demo.accept()">Calculate</button>
+        <hr>
+        <table>
+            <tr>
+                <th ng-repeat="header in demo.tableData.headers">{{header}}</th>
+            </tr>
+
+            <tr ng-repeat="row in demo.tableData.data">
+                <td>{{ row.Title }}</td>
+                <td>{{ row.InternationalRevenue }}</td>
+                <td>{{ row.DomesticRevenue }}</td>
+            </tr>
+        </table>
     </div>
 
     <script src="lib/angular.js"></script>
