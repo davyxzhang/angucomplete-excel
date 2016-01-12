@@ -261,25 +261,25 @@
 
             //for special characters and non-input buttons
             elem.on("keyup", function (event) {
+                var currentCaretPos, strLeft, strRight;
                 //TODO if statement for DEL button which does the opposite direction of delete as backspace
-
                 if(event.which === 8) {//backspace
                     scope.selectedObject = null;
                     if(scope.newSearch.length !== 0) {
                         scope.newSearch = scope.newSearch.replace(scope.newSearch.charAt(scope.newSearch.length - 1), "");
                     } else {
-                        var currentCaretPos = getCaret(element);
-                        var strLeft = element.value.substr(0, currentCaretPos);
-                        var strRight = element.value.substr(currentCaretPos, element.value.length);
+                        currentCaretPos = getCaret(element);
+                        strLeft = element.value.substr(0, currentCaretPos);
+                        strRight = element.value.substr(currentCaretPos, element.value.length);
                         completeStr = strLeft.substr(0, currentCaretPos) + strRight;
 
                         scope.showDropdown = false;
                     }
                 } else if (event.which === 46) { //Delete btn
                     scope.selectedObject = null;
-                    var currentCaretPos = getCaret(element);
-                    var strLeft = element.value.substr(0, currentCaretPos);
-                    var strRight = element.value.substr(currentCaretPos, element.value.length);
+                    currentCaretPos = getCaret(element);
+                    strLeft = element.value.substr(0, currentCaretPos);
+                    strRight = element.value.substr(currentCaretPos, element.value.length);
                     completeStr = strLeft + strRight.substr(currentCaretPos + 1, element.value.length);
                     //if()
                 }else if(event.which === 27 || (event.which === 110 || event.which === 190) || (event.which === 107 || event.which === 187)
